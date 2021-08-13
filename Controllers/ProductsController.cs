@@ -24,6 +24,8 @@ namespace Storage.Controllers
         {
             return View(await _context.Product.ToListAsync());
         }
+
+        // GET: Filter functionality
         [HttpGet]
         public async Task<IActionResult> Filter(string category)
         {
@@ -37,9 +39,8 @@ namespace Storage.Controllers
                     Count = p.Count,
                     InventoryValue = p.Price * p.Count
                 });
-            return View("NewView", await model.ToListAsync()); // Samma problem med Vy men går med overload..
+            return View("NewView", await model.ToListAsync()); 
 
-            //return View(await _context.Product.ToListAsync());
         }
         public async Task<IActionResult> NewView()
         {
